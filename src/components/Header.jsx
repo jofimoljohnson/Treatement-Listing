@@ -1,23 +1,29 @@
+import React from 'react'
+import { useAppDispatch } from '../hook'
+import { clearAll } from '../feature/treatements/treatementSlice'
 
 
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { clearTreatments } from "../Feature/treatements/treatementSlice";
+export default function Header({ onLogout }) {
+const dispatch = useAppDispatch()
 
-export default function Header() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    dispatch(clearTreatments());
-    navigate("/");
-  };
+const handleLogout = () => {
+dispatch(clearAll())
+if (onLogout) onLogout()
+}
 
-  return (
-    <div className="bg-gray-800 text-white p-4 flex justify-between">
-      <h1 className="font-bold">Treatment Management</h1>
-      <button onClick={handleLogout} className="bg-red-500 px-4 py-1">Logout</button>
-    </div>
-  );
+
+return (
+<header className="flex items-center justify-between p-4 bg-white shadow">
+<h1 className="text-xl font-semibold">Treatment Manager</h1>
+<div>
+<button
+className="px-3 py-1 rounded-md border hover:bg-gray-50"
+onClick={handleLogout}
+>
+Logout
+</button>
+</div>
+</header>
+)
 }

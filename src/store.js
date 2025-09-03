@@ -1,22 +1,12 @@
-// import { configureStore } from '@reduxjs/toolkit'
-// import treatmentReducer from './Feature/treatements/treatementSlice'
+import { configureStore } from '@reduxjs/toolkit'
+import treatmentsReducer from './feature/treatements/treatementSlice'
 
 
-// const store = configureStore({
-// reducer: {
-// treatments: treatmentReducer,
-// },
-// })
+const store = configureStore({
+reducer: {
+treatments: treatmentsReducer,
+},
+})
 
 
-// export default store
-
-
-import { configureStore } from "@reduxjs/toolkit";
-import treatmentReducer from "./Feature/treatements/treatementSlice";
-
-export const store = configureStore({
-  reducer: {
-    treatments: treatmentReducer,
-  },
-});
+export default store
